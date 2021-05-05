@@ -5,5 +5,5 @@
 - ### 2 Simple UDP calculator, Java
 - ### 3 Threaded prime finder, Scala
 - ### 4 Eventloops & WorkerThreads, Java
-- ### 5 Web code interpreter, JS, Java, Docker
+- ### 5 Web code interpreter, JS(React), Java, Docker
 - ### 6 Websocket chat web app, JS
