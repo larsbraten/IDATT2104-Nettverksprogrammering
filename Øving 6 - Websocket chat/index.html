@@ -1,0 +1,52 @@
+<!DOCTYPE html>m
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Chat</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            const chat_send = $('#button-send');
+            const chat_input = $('#message-input');
+            const chat_messages = $('#chatmessages');
+
+            let ws = new WebSocket('ws://' + location.hostname + ':[@WSPORT]');
+            ws.onmessage = (event) => {
+                chat_messages.append("Anonymous: " + event.data + "<br />");
+            }
+            const sendMessage = () => {
+                ws.send(chat_input.val());
+                chat_input.val('');
+            }
+
+            chat_send.click(() => sendMessage());
+            chat_input.keypress((e) => {
+                if (e.keyCode === 13) {
+                    sendMessage();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<section name="chatbox">
+    <div class="container">
+        <h1 class="title">Cool websocket chat thingy</h1>
+        <div class="field is-grouped">
+            <p class="control is-expanded">
+                <input id="message-input" class="input is-info" type="text" placeholder="your message" />
+            </p>
+            <p class="control">
+                <button id="button-send" class="button is-link">Send</button>
+            </p>
+        </div>
+        <pre id="chatmessages"></pre>
+    </div>
+</section>
+</body>
+</html>
