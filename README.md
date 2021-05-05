@@ -1,5 +1,5 @@
 # IDATT2104
-## Code from the course "IDATT2104 - Web programming"
+## Code from the course "IDATT2104 - Network programming"
 
 - ### 1 Simple, threaded and unthreaded TCP calculator, Java
 - ### 2 Simple UDP calculator, Java
